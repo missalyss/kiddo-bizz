@@ -1,0 +1,21 @@
+.canvas {
+  background-color: #ffffff;
+  border: 5px solid black;
+  height: 500px;
+  margin: auto;
+  width: 1000px;
+}
+
+.row {
+  box-sizing: border-box;
+  display: flex;
+  height: 4px;
+}
+
+.cell {
+  width: 5px;
+}
+
+canvas {
+  background-color: white;
+}

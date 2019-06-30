@@ -1,0 +1,48 @@
+body{
+  background-color: #9f9d9f;
+  width: 100%;
+}
+
+h1{
+  font-family: futura, sans-serif;
+  text-align: center;
+  font-size: 44px;
+  margin: 12px;
+}
+
+p {
+  font-family: futura, sans-serif;
+  text-align: center;
+  margin: 5px;
+}
+
+.red {
+  background-color: red;
+}
+.orange {
+  background-color: orange;
+}
+.yellow {
+  background-color: yellow;
+}
+.green {
+  background-color: green;
+}
+.blue {
+  background-color: blue;
+}
+.purple {
+  background-color: purple;
+}
+.brown {
+  background-color: brown;
+}
+.black {
+  background-color: black;
+}
+.white {
+  background-color: white;
+}
+.pink {
+  background-color: pink;
+}
