@@ -1,19 +1,5 @@
-body{
-  background-color: #9f9d9f;
-  width: 100%;
-}
-
-h1{
-  font-family: futura, sans-serif;
-  text-align: center;
-  font-size: 44px;
-  margin: 12px;
-}
-
-p {
-  font-family: futura, sans-serif;
-  text-align: center;
-  margin: 5px;
+.invisible {
+  visibility: hidden;
 }
 
 .red {

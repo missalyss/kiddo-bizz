@@ -1,0 +1,49 @@
+body{
+  background-color: lightgoldenrodyellow;
+  width: 100%;
+  font-family: futura, sans-serif;
+}
+
+h1{
+  font-family: futura, sans-serif;
+  text-align: center;
+  font-size: 44px;
+  margin: 36px;
+}
+
+p {
+  font-family: futura, sans-serif;
+  text-align: center;
+  margin: 5px;
+}
+
+a {
+  text-decoration: none;
+}
+button {
+    font-family: futura, sans-serif;
+  font-size: 30px;
+}
+
+.baseNav {
+  margin: 24px;
+  height: 200px;
+  width: 400px;
+  background-color: turquoise;
+
+}
+
+.navWrapper {
+  margin-top: 10%;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .navWrapper {
+    flex-direction: column;
+  }
+}

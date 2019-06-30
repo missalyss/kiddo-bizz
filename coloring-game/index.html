@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Art Time!</title>
-    <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../patterns.css">
+    <!-- <link rel="stylesheet" href="./coloring.css"> -->
     <link rel="stylesheet" href="./pallet.css">
     <link rel="stylesheet" href="./canvas.css">
 
@@ -17,7 +19,7 @@
     </header>
     <div class="canvas" onmousedown="return false">
     </div>
-    <div class="command">
+    <div class="command invisible">
       <select name="command" id="command">
         <option value="pensil">pensil</option>
         <option value="background">background</option>
@@ -39,9 +41,5 @@
     <p>Tips: There's no undo! If you make a mistake, turn the color white, or whatever color is underneath.</p>
     <p>If you refresh, you'll lose all your work! Do a screenshot instead!</p>
     <p>If you go too fast, the mouse won't be able to keep up and it'll skip over lines. Just take it easy, okay?</p>
-
-    <canvas id="canvasLou" width="300" height="300">
-      An alternative text describing what your canvas displays.
-    </canvas>
   </body>
 </html>
