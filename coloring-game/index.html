@@ -18,38 +18,28 @@
     <script defer type="text/javascript" src="main.js"></script>
   </head>
   <body>
-    <header class="text-center">
+    <header class="no-mobile text-center">
       <h1>It's Art Time!</h1>
-      <div style='display:flex; align-items: center; justify-content: center;'>
-        <h2>Desktop Only</h2>
-        <img style="height: 50px;" src="./public/sad-trombone.png" alt="sad trombone">
-      </div>
     </header>
-    <div class="canvasWrapper">
-      <canvas height='500' width='500' class="canvas">
-      </canvas>
-    </div>
     <div class="command invisible">
       <select name="command" id="command">
         <option value="pensil">pensil</option>
         <option value="background">background</option>
       </select>
     </div>
+        <p>If you refresh, you'll lose all your work! Do a screenshot instead!</p>
     <div class="pallet">
       <div class="currentColor"></div>
-      <div class="color palletColor red"></div>
-      <div class="color palletColor orange"></div>
-      <div class="color palletColor yellow"></div>
-      <div class="color palletColor green"></div>
-      <div class="color palletColor blue"></div>
-      <div class="color palletColor purple"></div>
-      <div class="color palletColor pink"></div>
-      <div class="color palletColor brown"></div>
-      <div class="color palletColor black"></div>
-      <div class="color palletColor white"></div>
+      <div class="color red"></div>
+      <div class="color orange"></div>
+      <div class="color yellow"></div>
+      <div class="color green"></div>
+      <div class="color blue"></div>
+      <div class="color purple"></div>
+      <div class="color pink"></div>
+      <div class="color brown"></div>
+      <div class="color black"></div>
+      <div class="color white"></div>
     </div>
-    <p>Tips: There's no undo! If you make a mistake, turn the color white, or whatever color is underneath.</p>
-    <p>If you refresh, you'll lose all your work! Do a screenshot instead!</p>
-    <p>If you go too fast, the mouse won't be able to keep up and it'll skip over lines. Just take it easy, okay?</p>
   </body>
 </html>

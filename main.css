@@ -8,7 +8,7 @@ h1{
   font-family: futura, sans-serif;
   text-align: center;
   font-size: 44px;
-  margin: 36px;
+  margin: 20px;
 }
 
 p {
@@ -27,9 +27,8 @@ button {
 
 .baseNav {
   margin: 24px;
-  height: 200px;
-  width: 400px;
-  background-color: turquoise;
+  padding: 24px;
+  background-color: darkslateblue;
 
 }
 
@@ -42,8 +41,28 @@ button {
   align-items: center;
 }
 
+.crayon {
+  width: inherit;
+  max-width: 300px;
+}
+
+.seashell {
+  max-height: 300px
+}
+
 @media only screen and (max-width: 600px) {
   .navWrapper {
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .navWrapper {
+    flex-direction: column;
+  }
+
+  .no-mobile {
+    visibility: hidden;
+    height: 0;
   }
 }
