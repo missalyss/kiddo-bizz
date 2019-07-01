@@ -10,3 +10,18 @@ p {
   text-align: center;
   margin: 5px;
 }
+
+.canvas {
+  background-color: #ffffff;
+  border: 5px solid black;
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    position: fixed;
+    margin: 0;
+  }
+  .canvas {
+    border: none !important;
+  }
+}

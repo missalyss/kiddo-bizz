@@ -1,15 +1,28 @@
-// CREATING THE GRID
-const canvasSize = () => {
-  const height = window.innerHeight - 250
-  const width = window.innerWidth - 100
+const createCanvas = () => {
+  var varH = 175;
+  var varW = 100;
+  if (window.innerWidth <= 800) {
+    varH = 20;
+    varW = 0;
+  }
+  const height = window.innerHeight - varH
+  const width = window.innerWidth - varW
 
-  $('body').append(`<canvas style="left: 50px" height=${height} width=${width} class="canvas"></canvas >`)
+  var autoMargin = varW <= 10 ? 0 : varW / 2;
+  console.log({ autoMargin });
+  console.log({ width });
+  console.log('innerwi: ', window.innerWidth);
+
+
+  $('body').append(`<canvas style="margin-left: ${autoMargin}px; width:${width}px;" height=${height} width=${width} class="canvas"></canvas >`)
+
 }
-canvasSize();
+createCanvas();
 
 let color = 'red';
 let medium = 'pensil';
-$("canvas").css({ "overflow": "hidden", 'position': 'fixed' });
+let shape = 'rect'
+
 // SAVES COLOR FROM PALLET
 $('.color').on('click', function () {
   color = $(this).css('background-color')

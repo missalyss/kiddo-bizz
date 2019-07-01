@@ -8,9 +8,8 @@
 
     <link rel="stylesheet" href="../main.css">
     <link rel="stylesheet" href="../patterns.css">
-    <!-- <link rel="stylesheet" href="./coloring.css"> -->
+    <link rel="stylesheet" href="./coloring.css">
     <link rel="stylesheet" href="./pallet.css">
-    <link rel="stylesheet" href="./canvas.css">
 
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <!-- <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->
@@ -18,16 +17,13 @@
     <script defer type="text/javascript" src="main.js"></script>
   </head>
   <body>
-    <header class="no-mobile text-center">
-      <h1>It's Art Time!</h1>
-    </header>
-    <div class="command invisible">
+    <div class="command invisible no-tablet">
       <select name="command" id="command">
         <option value="pensil">pensil</option>
         <option value="background">background</option>
       </select>
     </div>
-        <p>If you refresh, you'll lose all your work! Do a screenshot instead!</p>
+        <p class="no-tablet" >If you refresh, you'll lose all your work! Do a screenshot instead!</p>
     <div class="pallet">
       <div class="currentColor"></div>
       <div class="color red"></div>

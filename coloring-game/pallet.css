@@ -1,21 +1,32 @@
 .pallet {
+  overflow: hidden;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin: auto;
   margin-top: 10px;
+  width: 70%;
 }
 
 .currentColor {
+  position: relative;
   background-color: red;
-  border: .5px solid black;
+  border: 3px solid black;
   margin-right: 10px;
   margin-bottom: 10px;
-  height: 30px;
-  width: 60px;
+  height: 70px;
+  width: inherit;
 }
 
 .color {
+  position: relative;
   border: .5px solid black;
   height: 50px;
-  width: 100%;
+  width: inherit;
+}
+
+@media only screen and (max-width: 800px) {
+  .pallet {
+    width: 95%;
+  }
 }
