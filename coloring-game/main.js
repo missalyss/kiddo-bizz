@@ -305,7 +305,7 @@ function gridSize(rowLength) {
         <div class="cell"></div>
       </div>
     `)
-    $('.canvas').append($row)
+    // $('.canvas').append($row)
   }
 }
 gridSize(125);
@@ -326,52 +326,61 @@ $('.color').on('click', function () {
 
 //MAKES THE ART!
 function paint() {
+  const $canvas = $('.canvas');
+  console.log($canvas);
+
+  // var $color = $('.currentColor').css('background-color')
+  // $color.change((() => {
+  //   $color = $('.currentColor').css('background-color')
+  // }))
+  // console.log('color: ', $color);
+
   var isDown = false;
-  $(document).mousedown(function () {
+
+  $canvas.on('mousedown', function () {
     isDown = true;
   })
-    .mouseup(function () {
+    .on('mouseup', function () {
       isDown = false;
     })
-  $('.cell').mouseover(function () {
+
+  $(document).on('mousemove', function (e) {
+    const canvasPosition = $canvas.offset()
+    var mouseX = e.pageX -= canvasPosition.left;
+    var mouseY = e.pageY -= canvasPosition.top;
     if (isDown) {
-      $(this).css('background-color', color, 'fast')
+      console.log();
+      $canvas.drawRect({
+        fillStyle: $('.currentColor').css('background-color'),
+        x: mouseX, y: mouseY,
+        width: 5,
+        height: 5
+      });
     }
   })
 }
 
 $(document).ready(function () {
-  const $canvas = $('#canvasLou');
+  // console.log('canvas defaults', $.jCanvas.defaults);
 
-  $canvas.click(() => {
-    $canvas.drawRect({
-      strokeStyle: 'blue',
-      strokeWidth: 4,
-      x: 150, y: 100,
-      fromCenter: false,
-      width: 200,
-      height: 100
-    });
-  })
+  const $canvas = $('.canvas');
 
-  $('canvas').drawPolygon({
-    layer: true,
-    fillStyle: '#c33',
-    x: 100, y: 100,
-    radius: 50,
-    sides: 5,
-    concavity: 0.5,
-    click: function (layer) {
-      // Spin star
-      $(this).animateLayer(layer, {
-        rotate: '+=144'
-      });
-    }
-  });
+  // $('canvas').drawPolygon({
+  //   layer: true,
+  //   fillStyle: '#c33',
+  //   x: 100, y: 100,
+  //   radius: 50,
+  //   sides: 5,
+  //   concavity: 0.5,
+  //   click: function (layer) {
+  //     // Spin star
+  //     $(this).animateLayer(layer, {
+  //       rotate: '+=144'
+  //     });
+  //   }
+  // });
+
   // change medium
-  console.log('med before change: ', medium);
-  console.log('val1: ', $("select#command").val());
-
   $("#command").change(() => {
     console.log('command change', medium);
     console.log('val2: ', $("select#command").val());
@@ -380,22 +389,12 @@ $(document).ready(function () {
     console.log('what med shoudl be', medium);
     return medium;
   })
-  console.log('val3: ,', $("select#command").val());
-
-  console.log('medium post change, ', medium);
 
   if (medium === 'pensil') {
-    console.log('val4', $("select#command").val());
-
     paint()
   } else {
-    console.log('val5:j ', $("select#command").val());
-
     // if (medium === 'background') {
     $('.cell').click(() => {
-      console.log('val6: ', $("select#command").val());
-
-      console.log('background, isdown');
       $('.canvas').css('background-color', color, 'fast')
     })
   }
