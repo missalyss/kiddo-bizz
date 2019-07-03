@@ -20,6 +20,7 @@ p {
   body {
     position: fixed;
     margin: 0;
+    overscroll-behavior: none;
   }
   .canvas {
     border: none !important;

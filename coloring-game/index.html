@@ -17,15 +17,33 @@
     <script defer type="text/javascript" src="main.js"></script>
   </head>
   <body>
-    <div class="command invisible no-tablet">
-      <select name="command" id="command">
-        <option value="pensil">pensil</option>
+
+    <div class="command">
+            <a id="save" href='#' onclick="downloadImage()" download='kiddo-bizz.png'><button>Save</button></a>
+            <button onclick="mostRecent()">undo</button>
+            <button onclick="refresh()">clear</button>
+
+      <select name="medium" id="medium">
+        <option value="pencil">pencil</option>
         <option value="background">background</option>
       </select>
+        <div class="shape">
+          <select name="shape" id="shape">
+            <option value="circle">circle🔵</option>
+            <option value="square">square⬛️</option>
+            <option value="star">star⭐️</option>
+            <option value="triangle">triangle🔺</option>
+            <option value="rectangle">rectangle ▬</option>
+            <option value="oval">oval⎚</option>
+            <option value="hello">hello</option>
+          </select>
+        </div>
     </div>
+
         <p class="no-tablet" >If you refresh, you'll lose all your work! Do a screenshot instead!</p>
     <div class="pallet">
       <div class="currentColor"></div>
+      <input type="color" id="color-picker" name="color-picker">
       <div class="color red"></div>
       <div class="color orange"></div>
       <div class="color yellow"></div>

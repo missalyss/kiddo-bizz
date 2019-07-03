@@ -7,35 +7,40 @@ const createCanvas = () => {
   }
   const height = window.innerHeight - varH
   const width = window.innerWidth - varW
-
   var autoMargin = varW <= 10 ? 0 : varW / 2;
-  console.log({ autoMargin });
+
+  $('body').append(`<canvas id="canvas" style="margin-left: ${autoMargin}px; width:${width}px;" height=${height} width=${width} class="canvas"></canvas >`)
+  console.log({ height });
   console.log({ width });
-  console.log('innerwi: ', window.innerWidth);
 
 
-  $('body').append(`<canvas style="margin-left: ${autoMargin}px; width:${width}px;" height=${height} width=${width} class="canvas"></canvas >`)
-
+  $('#canvas').drawRect({
+    id: 'background',
+    layer: true,
+    fillStyle: '#000',
+    x: 0, y: 0,
+    width: '100%',
+    height: '100%'
+  });
 }
 createCanvas();
 
-let color = 'red';
-let medium = 'pensil';
-let shape = 'rect'
-
 // SAVES COLOR FROM PALLET
 $('.color').on('click', function () {
-  color = $(this).css('background-color')
+  const color = $(this).css('background-color')
   $('.currentColor').css('background-color', color)
 })
 
-// while (commandCenter.medium === 'background') {
-// console.log('COMAND CENTER IS BACKGROUND');
-// useMediumBackground()
-// }
+// change shape
+$("#shape").change(() => {
+  const shape = $("select#shape").val()
+  shape === 'hello' ? $('.shape').append(() =>
+    '<input type="text" name="hello" id="hello" value="hello sophie" />'
+  ) : null;
+})
 
 //MAKES THE ART!
-function paint() {
+const playColoringGame = () => {
   const $canvas = $('.canvas');
   var isDown = false;
 
@@ -45,8 +50,8 @@ function paint() {
     .bind('mouseup touchend', () => {
       isDown = false;
     })
-
     .bind('mousemove touchmove', (e) => {
+      e.preventDefault()
       var mouseX;
       var mouseY;
 
@@ -60,45 +65,118 @@ function paint() {
       }
 
       if (isDown) {
-        $canvas.drawRect({
-          fillStyle: $('.currentColor').css('background-color'),
-          x: mouseX, y: mouseY,
-          width: 5,
-          height: 5
-        });
+        const $medium = $("select#medium").val()
+        const $currentShape = $('select#shape').val();
+        const $currentColor = $('.currentColor').css('background-color');
+
+        const shapers = () => {
+
+          switch ($currentShape) {
+            case 'square': {
+              $('canvas').drawPath({
+                strokeStyle: '#000',
+                strokeWidth: 4,
+                p1: {
+                  type: 'line',
+                  x1: mouseX, y1: mouseY
+                }
+              })
+            }
+              //   $canvas.drawRect({
+              //     layer: true,
+              //     fillStyle: $currentColor,
+              //     x: mouseX, y: mouseY,
+              //     width: 5,
+              //     height: 5
+              //   });
+              // }
+              break;
+            case 'circle': {
+              $canvas.drawArc({
+                layer: true,
+                fillStyle: $currentColor,
+                x: mouseX, y: mouseY,
+                radius: 5
+              });
+            }
+              break;
+            case 'star':
+              $canvas.drawPolygon({
+                layer: true,
+                fillStyle: $currentColor,
+                x: mouseX, y: mouseY,
+                radius: 5,
+                sides: 5,
+                concavity: 0.5,
+              });
+              break;
+            case 'rectangle':
+              $canvas.drawRect({
+                layer: true,
+                fillStyle: $currentColor,
+                x: mouseX, y: mouseY,
+                width: 6,
+                height: 4
+              });
+              break;
+            case 'triangle':
+              $canvas.drawPolygon({
+                layer: true,
+                fillStyle: $currentColor,
+                x: mouseX, y: mouseY,
+                radius: 5,
+                sides: 3
+              });
+              break;
+            case 'oval':
+              $canvas.drawEllipse({
+                layer: true,
+                fillStyle: $currentColor,
+                x: mouseX, y: mouseY,
+                width: 6,
+                height: 4
+              });
+              break;
+            case 'hello':
+              $canvas.drawText({
+                layer: true,
+                fillStyle: $currentColor,
+                x: mouseX, y: mouseY,
+                width: 6, height: 4,
+                strokeWidth: 1,
+                fontSize: 64,
+                fontFamily: 'Verdana, sans-serif',
+                text: $('#hello').val()
+              });
+          }
+        }
+        $medium === 'background' ? $('.canvas').css('background-color', $currentColor) : shapers()
       }
     })
 }
 
-$(document).ready(function () {
+playColoringGame()
+
+const mostRecent = () => {
+  const layer = $('#canvas').getLayer(-1);
+  $('#canvas').removeLayer(layer).drawLayers()
+  console.log('undun');
+
+}
+
+const refresh = () => {
+  $('#canvas').clearCanvas()
+}
+
+const downloadImage = () => {
+  const imageUrl = $('#canvas').getCanvasImage()
+  $('#save').attr('href', imageUrl)
+}
+
+
   // console.log('canvas defaults', $.jCanvas.defaults);
-  // $('canvas').drawPolygon({
-  //   layer: true,
-  //   fillStyle: '#c33',
-  //   x: 100, y: 100,
-  //   radius: 50,
-  //   sides: 5,
-  //   concavity: 0.5,
-  //   click: function (layer) {
-  //     // Spin star
-  //     $(this).animateLayer(layer, {
-  //       rotate: '+=144'
-  //     });
-  //   }
-  // });
 
-  // change medium
-  $("#command").change(() => {
-    medium = $("select#command").val()
-    return medium;
-  })
-
-  if (medium === 'pensil') {
-    paint()
-  } else {
-    // if (medium === 'background') {
-    $('.cell').click(() => {
-      $('.canvas').css('background-color', color, 'fast')
-    })
-  }
-})
+// $.getScript('/path/to/imported/script.js', function () {
+//   // script is now loaded and executed.
+//   // put your dependent JS here.
+// });
